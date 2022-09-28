@@ -1698,7 +1698,7 @@ repoServer:
   name: repo-server
 
   # -- The number of repo server pods to run
-  replicas: 1
+  replicas: 3
 
   autoscaling:
     # -- Enable Horizontal Pod Autoscaler ([HPA]) for the repo server
