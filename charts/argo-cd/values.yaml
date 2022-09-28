@@ -1506,7 +1506,7 @@ server:
 
     # exec.enabled indicates whether the UI exec feature is enabled. It is disabled by default.
     # Ref: https://argo-cd.readthedocs.io/en/latest/operator-manual/rbac/#exec-resource
-    exec.enabled: "false"
+    exec.enabled: "true"
 
     # admin.enabled indicates whether the admin user is enabled. It is enabled by default.
     # https://argo-cd.readthedocs.io/en/latest/faq/#how-to-disable-admin-user
