@@ -15,9 +15,9 @@ provider "kubernetes" {
 }
 
 locals {
-  name            = "uta-k8s-demo"
+  name            = "wuralab"
   cluster_version = "1.23"
-  region          = "us-west-2"
+  region          = "us-west-1"
 
   tags = {
     Name    = local.name
@@ -49,7 +49,7 @@ module "eks" {
     vpc-cni = {
       resolve_conflicts        = "OVERWRITE"
     }
-    aws-ebs-csi-driver = {}
+    #aws-ebs-csi-driver = {}
   }
 
   cluster_encryption_config = [{
@@ -72,7 +72,7 @@ module "eks" {
   # EKS Managed Node Group(s)
   eks_managed_node_group_defaults = {
     disk_size      = 50
-    instance_types = ["m6i.large", "m5.large", "m5n.large", "m5zn.large"]
+    instance_types = ["m6i.large", "m5.large", "m5zn.large"]
   }
 
   eks_managed_node_groups = {
@@ -110,16 +110,16 @@ module "vpc" {
   name = local.name
   cidr = "10.0.0.0/16"
 
-  azs             = ["${local.region}a", "${local.region}b", "${local.region}c"]
-  private_subnets = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
-  public_subnets  = ["10.0.4.0/24", "10.0.5.0/24", "10.0.6.0/24"]
+  azs             = ["${local.region}a", "${local.region}b"]
+  private_subnets = ["10.0.1.0/24", "10.0.2.0/24"]
+  public_subnets  = ["10.0.4.0/24", "10.0.5.0/24"]
 
   enable_ipv6                     = true
   assign_ipv6_address_on_creation = true
   create_egress_only_igw          = true
 
-  public_subnet_ipv6_prefixes  = [0, 1, 2]
-  private_subnet_ipv6_prefixes = [3, 4, 5]
+  public_subnet_ipv6_prefixes  = [0, 1]
+  private_subnet_ipv6_prefixes = [3, 4]
 
   enable_nat_gateway   = true
   single_nat_gateway   = true

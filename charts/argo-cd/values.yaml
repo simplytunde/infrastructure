@@ -380,7 +380,7 @@ controller:
 
   # -- The number of application controller pods to run.
   # Additional replicas will cause sharding of managed clusters across number of replicas.
-  replicas: 1
+  replicas: 3
 
   # -- DEPRECATED - Application controller commandline flags
   args: {}
@@ -1239,13 +1239,13 @@ server:
     # readOnlyRootFilesystem: true
 
   # -- Resource limits and requests for the Argo CD server
-  resources: {}
-  #  limits:
-  #    cpu: 100m
-  #    memory: 128Mi
-  #  requests:
-  #    cpu: 50m
-  #    memory: 64Mi
+  resources:
+   limits:
+     cpu: 500m
+     memory: 1Gi
+   requests:
+     cpu: 250m
+     memory: 512Mi
 
   ## Certificate configuration
   certificate:

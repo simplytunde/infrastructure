@@ -1,4 +1,5 @@
 controller:
+  replicaCount: 3
   # config:
   #   ssl-redirect: "false" # we use `special` port to control ssl redirection
   #   server-snippet: |
@@ -17,7 +18,7 @@ controller:
     annotations:
       # service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "tcp"
       # service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "443"
-      service.beta.kubernetes.io/aws-load-balancer-ssl-cert: "arn:aws:acm:us-west-2:185437386355:certificate/112ac8aa-96dd-4c39-93fc-c026c313bd15"
+      service.beta.kubernetes.io/aws-load-balancer-ssl-cert: "arn:aws:acm:us-west-1:185437386355:certificate/5a0a8266-d384-4372-81a9-78dc59f7c217"
       # service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
       service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "http"
       service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "https"

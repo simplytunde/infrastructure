@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: appsmith
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/simplytunde/infrastructure.git
+    targetRevision: HEAD
+    path: charts/appsmith
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: appsmith
+  syncPolicy:
+    automated: {}
+    syncOptions:
+      - CreateNamespace=true
